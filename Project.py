@@ -19,11 +19,12 @@ st.header('Data preparing')
 st.code("""
 df = pd.read_csv("train.csv")
 df.head()
-
-
+""")
+df = pd.read_csv("train.csv")
+df.head()
 # In[180]:
 
-
+st.code("""
 num_cols = [
     'ClientPeriod',
     'MonthlySpending',
@@ -51,13 +52,40 @@ cat_cols = [
 
 feature_cols = num_cols + cat_cols
 target_col = 'Churn'
+""")
+num_cols = [
+    'ClientPeriod',
+    'MonthlySpending',
+    'TotalSpent'
+]
 
+cat_cols = [
+    'Sex',
+    'IsSeniorCitizen',
+    'HasPartner',
+    'HasChild',
+    'HasPhoneService',
+    'HasMultiplePhoneNumbers',
+    'HasInternetService',
+    'HasOnlineSecurityService',
+    'HasOnlineBackup',
+    'HasDeviceProtection',
+    'HasTechSupportAccess',
+    'HasOnlineTV',
+    'HasMovieSubscription',
+    'HasContractPhone',
+    'IsBillingPaperless',
+    'PaymentMethod'
+]
 
+feature_cols = num_cols + cat_cols
+target_col = 'Churn'
 # In[181]:
 
-
+st.code("""
 df.info()
 """)
+df.info()
 
 # No null values. But TotalSpent has type object which is strange
 st.markdown('No null values. But TotalSpent has type object which is strange')
