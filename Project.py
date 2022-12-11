@@ -329,17 +329,22 @@ st.code("""
 df[num_cols].describe()
 """)
 st.dataframe(df[num_cols].describe())
-# In[196]:
 
-
+st.code("""
 fig, axis = plt.subplots(1, 4, figsize=(20,5))
 for i in range(len(num_cols)):
     axis[i].hist(df[num_cols[i]], bins=9)
     axis[i].set_title(num_cols[i])
 plt.show()
+""")
+fig, axis = plt.subplots(1, 4, figsize=(20,5))
+for i in range(len(num_cols)):
+    axis[i].hist(df[num_cols[i]], bins=9)
+    axis[i].set_title(num_cols[i])
+plt.show()
+st.pyplot(fig)
 
-
-# Then some information about categorical columns
+st.markdown('Then some information about categorical columns')
 
 # In[197]:
 
