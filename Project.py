@@ -4,17 +4,16 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-sns.set_theme()
-
-st.title('sth')
-st.header('sth')
-st.subheader('sth')
-st.markdown('sth')
-st.code("""
-""")
-
 st.title('Analysis of user churn data for a telecom company')
 st.header('Data preparing')
+
+st.code("""
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+import seaborn as sns
+import streamlit as st
+""")
 
 st.code("""
 df = pd.read_csv("train.csv")
