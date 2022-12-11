@@ -140,10 +140,57 @@ for col_name in cat_cols:
     print(df[col_name].unique())
     print()
 """)
-for col_name in cat_cols:
-    st.markdown(col_name)
-    st.markdown(df[col_name].unique())
-    st.markdown()
+st.markdown('''
+Sex
+['Male' 'Female']
+
+IsSeniorCitizen
+[0 1]
+
+HasPartner
+['Yes' 'No']
+
+HasChild
+['Yes' 'No']
+
+HasPhoneService
+['Yes' 'No']
+
+HasMultiplePhoneNumbers
+['No' 'Yes' 'No phone service']
+
+HasInternetService
+['No' 'Fiber optic' 'DSL']
+
+HasOnlineSecurityService
+['No internet service' 'No' 'Yes']
+
+HasOnlineBackup
+['No internet service' 'No' 'Yes']
+
+HasDeviceProtection
+['No internet service' 'No' 'Yes']
+
+HasTechSupportAccess
+['No internet service' 'Yes' 'No']
+
+HasOnlineTV
+['No internet service' 'No' 'Yes']
+
+HasMovieSubscription
+['No internet service' 'No' 'Yes']
+
+HasContractPhone
+['One year' 'Two year' 'Month-to-month']
+
+IsBillingPaperless
+['No' 'Yes']
+
+PaymentMethod
+['Mailed check' 'Credit card (automatic)' 'Electronic check'
+ 'Bank transfer (automatic)']
+
+''')
 
 st.markdown('Most of categorical columns may be reformatted to int64 without loss of data')
 
