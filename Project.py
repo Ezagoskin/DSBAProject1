@@ -128,24 +128,24 @@ df['TotalSpent'] = df['TotalSpent'].astype(float)
 
 st.subheader('Transformations')
 
-# In[186]:
-
-
+st.code("""
 old = df.copy() #We will need it later
+""")
 
+st.markdown('Look what values categorical columns have')
 
-# Look what values categorical columns have
-
-# In[187]:
-
-
+st.code("""
 for col_name in cat_cols:
     print(col_name)
     print(df[col_name].unique())
     print()
+""")
+for col_name in cat_cols:
+    st.markdown(col_name)
+    st.markdown(df[col_name].unique())
+    st.markdown()
 
-
-# Most of categorical columns may be reformatted to int64 without loss of data
+st.markdown('Most of categorical columns may be reformatted to int64 without loss of data')
 
 # In[188]:
 
