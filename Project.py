@@ -12,7 +12,6 @@ st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streaml
 st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
 st.markdown("[Little data clearing](#Little data clearing)")
 
-st.markdown("check out this [link](%s)" % url)
 st.header('Data preparing')
 
 st.code("""
