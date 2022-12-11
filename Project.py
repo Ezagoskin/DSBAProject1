@@ -140,6 +140,10 @@ for col_name in cat_cols:
     print(df[col_name].unique())
     print()
 """)
+for col_name in cat_cols:
+    col_name
+    df[col_name].unique()
+
 st.code('''
 Sex
 ['Male' 'Female']
