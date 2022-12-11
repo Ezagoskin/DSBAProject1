@@ -341,15 +341,11 @@ fig, axis = plt.subplots(1, 4, figsize=(20,5))
 for i in range(len(num_cols)):
     axis[i].hist(df[num_cols[i]], bins=9)
     axis[i].set_title(num_cols[i])
-plt.show()
 st.pyplot(fig)
 
 st.markdown('Then some information about categorical columns')
 
-# In[197]:
-
-
-
+st.code("""
 fig, ax = plt.subplots(4, 4, figsize=(20, 20))
 ax = ax.ravel()
 for i, cat_col in enumerate(cat_cols):
@@ -357,13 +353,18 @@ for i, cat_col in enumerate(cat_cols):
     ax[i].pie(old[cat_col].value_counts(), labels=old[cat_col].value_counts().index)
     ax[i].legend()
 fig.show()
+""")
+fig, ax = plt.subplots(4, 4, figsize=(20, 20))
+ax = ax.ravel()
+for i, cat_col in enumerate(cat_cols):
+    ax[i].set_title(cat_col)
+    ax[i].pie(old[cat_col].value_counts(), labels=old[cat_col].value_counts().index)
+    ax[i].legend()
+st.pyplot(fig)
 
+st.markdown('And a bit about target column')
 
-# And a bit about target column
-
-# In[198]:
-
-
+st.code("""
 fig, ax = plt.subplots()
 ax.set_title(target_col)
 ax.pie(df[target_col].value_counts(), autopct='%1.1f%%', labels=df[target_col].value_counts().index)
@@ -371,19 +372,27 @@ ax.legend()
 plt.show()
 d = dict(df[target_col].value_counts())
 print(f'{d[0]} of customers stayed with firm, {d[1]} left')
+""")
+fig, ax = plt.subplots()
+ax.set_title(target_col)
+ax.pie(df[target_col].value_counts(), autopct='%1.1f%%', labels=df[target_col].value_counts().index)
+ax.legend()
+st.pyplot(fig)
+d = dict(df[target_col].value_counts())
+st.markdown(f'{d[0]} of customers stayed with firm, {d[1]} left')
 
-
-# ## Data comparison
-
-# Start with pairplot as it gives some general overview about how columns are connected
+st.header('Data comparison')
+st.markdown('Start with pairplot as it gives some general overview about how columns are connected')
 
 # In[199]:
 
+st.code("""
+fig = sns.pairplot(data=df[num_cols+[target_col]],hue=target_col)
+""")
+fig = sns.pairplot(data=df[num_cols+[target_col]],hue=target_col)
+st.pyplot(fig)
 
-f = sns.pairplot(data=df[num_cols+[target_col]],hue=target_col)
-
-
-# We can see that in ClientPeriod-MonthlySpending chart blue and orange points are located in different parts, so let's check how relation between ClientPeriod and MonthlySpending depands on whether client left the firm or not
+st.markdown('We can see that in ClientPeriod-MonthlySpending chart blue and orange points are located in different parts, so check how relation between ClientPeriod and MonthlySpending depands on whether client left the firm or not')
 
 # In[200]:
 
