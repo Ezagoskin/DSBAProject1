@@ -3,6 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
 import streamlit as st
+
 sns.set_theme()
 
 st.title('sth')
@@ -143,7 +144,7 @@ st.subheader('Transformations')
 st.code("""
 old = df.copy() #We will need it later
 """)
-old = df.copy() #We will need it later
+old = df.copy()  # We will need it later
 
 st.markdown('Look what values categorical columns have')
 
@@ -311,7 +312,7 @@ df = df[cols]
 df.head()
 """)
 cols = df.columns.tolist()
-cols = cols[:-3] + cols[-2:]+ cols[-3:-2]
+cols = cols[:-3] + cols[-2:] + cols[-3:-2]
 df = df[cols]
 st.dataframe(df.head())
 
@@ -336,7 +337,7 @@ for i in range(len(num_cols)):
     axis[i].set_title(num_cols[i])
 plt.show()
 """)
-fig, axis = plt.subplots(1, 4, figsize=(20,5))
+fig, axis = plt.subplots(1, 4, figsize=(20, 5))
 for i in range(len(num_cols)):
     axis[i].hist(df[num_cols[i]], bins=9)
     axis[i].set_title(num_cols[i])
@@ -388,7 +389,7 @@ st.markdown('Start with pairplot as it gives some general overview about how col
 st.code("""
 fig = sns.pairplot(data=df[num_cols+[target_col]],hue=target_col)
 """)
-fig = sns.pairplot(data=df[num_cols+[target_col]],hue=target_col)
+fig = sns.pairplot(data=df[num_cols + [target_col]], hue=target_col)
 st.pyplot(fig)
 
 st.markdown('''
@@ -406,9 +407,9 @@ sns.boxplot(data=df[df['Churn']==1],x='ClientPeriod', y='MonthlySpending',ax=ax[
 ax[1].set_title('Left the firm')
 """)
 fig, ax = plt.subplots(1, 2, figsize=(20, 5))
-sns.boxplot(data=df[df['Churn']==0],x='ClientPeriod', y='MonthlySpending',ax=ax[0])
+sns.boxplot(data=df[df['Churn'] == 0], x='ClientPeriod', y='MonthlySpending', ax=ax[0])
 ax[0].set_title('Stayed')
-sns.boxplot(data=df[df['Churn']==1],x='ClientPeriod', y='MonthlySpending',ax=ax[1])
+sns.boxplot(data=df[df['Churn'] == 1], x='ClientPeriod', y='MonthlySpending', ax=ax[1])
 ax[1].set_title('Left the firm')
 st.pyplot(fig)
 
@@ -424,7 +425,7 @@ and orange lies 20 points higher. It is a very valuable result
 st.code("""
 fig = sns.lmplot(data=df,x='ClientPeriod', y='MonthlySpending',hue='Churn')
 """)
-fig = sns.lmplot(data=df,x='ClientPeriod', y='MonthlySpending',hue='Churn')
+fig = sns.lmplot(data=df, x='ClientPeriod', y='MonthlySpending', hue='Churn')
 st.pyplot(fig)
 
 st.markdown('Also we see that, in general, the more ClientPeriod, the more MonthlySpendings')
@@ -452,9 +453,9 @@ df2 = df[df['Sex']==0]
 cond = [df['ContractDuration']==0, df['ContractDuration']==1, df['ContractDuration']==2]
 titl = ['Month-to-month', 'One year', 'Two years']
 """)
-df1 = df[df['Sex']==1]
-df2 = df[df['Sex']==0]
-cond = [df['ContractDuration']==0, df['ContractDuration']==1, df['ContractDuration']==2]
+df1 = df[df['Sex'] == 1]
+df2 = df[df['Sex'] == 0]
+cond = [df['ContractDuration'] == 0, df['ContractDuration'] == 1, df['ContractDuration'] == 2]
 titl = ['Month-to-month', 'One year', 'Two years']
 
 st.code("""
@@ -465,9 +466,9 @@ for j in range(3):
     axis[j].set_title(titl[j])
 plt.show()
 """)
-fig, axis = plt.subplots(1,3, figsize=(20,5))
+fig, axis = plt.subplots(1, 3, figsize=(20, 5))
 for j in range(3):
-    axis[j].hist([df1[cond[j]]['ClientPeriod'],df2[cond[j]]['ClientPeriod']], bins=9)
+    axis[j].hist([df1[cond[j]]['ClientPeriod'], df2[cond[j]]['ClientPeriod']], bins=9)
     axis[j].legend(['Male', 'Female'])
     axis[j].set_title(titl[j])
 st.pyplot(fig)
@@ -518,36 +519,39 @@ dsm = []
 dys = []
 dym = []
 d = []
-for i in range(1,10):
+for i in range(1, 10):
     dfi = dfss[df['NumberOfServices'] == i]['Churn']
-    dss.append(sum(list(dfi))/len(dfi))
-for i in range(1,10):
+    dss.append(sum(list(dfi)) / len(dfi))
+for i in range(1, 10):
     dfi = dfsm[df['NumberOfServices'] == i]['Churn']
-    dsm.append(sum(list(dfi))/len(dfi))
-for i in range(1,10):
+    dsm.append(sum(list(dfi)) / len(dfi))
+for i in range(1, 10):
     dfi = dfys[df['NumberOfServices'] == i]['Churn']
-    dys.append(sum(list(dfi))/len(dfi))
-for i in range(1,10):
+    dys.append(sum(list(dfi)) / len(dfi))
+for i in range(1, 10):
     dfi = dfym[df['NumberOfServices'] == i]['Churn']
-    dym.append(sum(list(dfi))/len(dfi))
-for i in range(1,10):
+    dym.append(sum(list(dfi)) / len(dfi))
+for i in range(1, 10):
     dfi = df[df['NumberOfServices'] == i]['Churn']
-    d.append(sum(list(dfi))/len(dfi))
+    d.append(sum(list(dfi)) / len(dfi))
 
 st.code("""
-l1 = plt.plot(range(1,10), dss)
-l2 = plt.plot(range(1,10), dsm)
-l3 = plt.plot(range(1,10), dys)
-l4 = plt.plot(range(1,10), dym)
-l5 = plt.plot(range(1,10), d)
-plt.legend(['Senior&Single','Senior&Married','Young&Single','Young&Married','All'])
+fig, ax = plt.subplots(figsize=(12, 6))
+ax.plot(range(1, 10), dss)
+ax.plot(range(1, 10), dsm)
+ax.plot(range(1, 10), dys)
+ax.plot(range(1, 10), dym)
+ax.plot(range(1, 10), d)
+ax.legend(['Senior&Single','Senior&Married','Young&Single','Young&Married','All'])
 """)
-plt.plot(range(1,10), dss)
-plt.plot(range(1,10), dsm)
-plt.plot(range(1,10), dys)
-plt.plot(range(1,10), dym)
-plt.plot(range(1,10), d)
-plt.legend(['Senior&Single','Senior&Married','Young&Single','Young&Married','All'])
+fig, ax = plt.subplots(figsize=(12, 6))
+ax.plot(range(1, 10), dss)
+ax.plot(range(1, 10), dsm)
+ax.plot(range(1, 10), dys)
+ax.plot(range(1, 10), dym)
+ax.plot(range(1, 10), d)
+ax.legend(['Senior&Single', 'Senior&Married', 'Young&Single', 'Young&Married', 'All'])
+st.pyplot(fig)
 
 st.subheader('''
 The hypotesis was partly confirmd. We knew that function showing ratio of left depending on 
