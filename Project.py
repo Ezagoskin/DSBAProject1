@@ -21,7 +21,7 @@ df = pd.read_csv("train.csv")
 df.head()
 """)
 df = pd.read_csv("train.csv")
-df.head()
+st.dataframe(df.head())
 # In[180]:
 
 st.code("""
