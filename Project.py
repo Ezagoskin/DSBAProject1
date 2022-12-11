@@ -106,7 +106,7 @@ a
 st.code("""
 df.iloc[list(a.keys()), :]
 """)
-df.iloc[list(a.keys()), :]
+st.dataframe(df.iloc[list(a.keys()), :])
 
 st.markdown('All this strings have 0 in ClientPeriod')
 
