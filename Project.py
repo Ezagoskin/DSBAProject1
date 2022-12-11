@@ -302,7 +302,6 @@ df[['HasInternetService']] = (df[['HasInternetService']] != 'No').astype(int)
 df['NumberOfServices'] = df[serv].sum(axis=1)
 old['NumberOfServices'] = df['NumberOfServices']
 num_cols.append('NumberOfServices')
-# In[193]:
 
 st.code("""
 #Rearrange columns order a bit
@@ -432,57 +431,63 @@ st.markdown('Also we see that, in general, the more ClientPeriod, the more Month
 st.markdown('Now, something about correlation')
 
 st.code("""
-df.corr().style.background_gradient(cmap='coolwarm').set_precision(2)
+fig = df.corr().style.background_gradient(cmap='coolwarm').set_precision(2)
+fig
 """)
-df.corr().style.background_gradient(cmap='coolwarm').set_precision(2)
+fig = df.corr().style.background_gradient(cmap='coolwarm').set_precision(2)
+fig
 
-# 1) TotalSpent strongly correlate both ClientPeriod and MonthlySpending which is not surprizing at all
-# 
+st.markdown('1) TotalSpent strongly correlate both ClientPeriod and MonthlySpending which is not surprizing at all')
+st.markdown('2) We can assume that clients with larger ClientPeriod tend to have more long-term contracts')
+st.markdown('''
+3) It can be noticed that clients with long ClientPeriod or long-term contract are less likely to leave the firm
+''')
+st.markdown('4) Sex correlate with nothing')
+st.markdown('Actually, there is a lot of what can be concluded from this wonderful table, but let's stop here')'
+st.markdown('The next charts confirms point 2 and partly confirm point 4')
 
-# 2) We can assume that clients with larger ClientPeriod tend to have more long-term contracts
-
-# 3) It can be noticed that clients with long ClientPeriod or long-term contract are less likely to leave the firm
-# 
-
-# 4) Sex correlate with nothing
-# 
-
-# Actually, there is a lot of what can be concluded from this wonderful table, but let's stop here
-
-# The next charts confirms point 2 and partly confirm point 4
-
-# In[203]:
-
-
+st.code("""
+df1 = df[df['Sex']==1]
+df2 = df[df['Sex']==0]
+cond = [df['ContractDuration']==0, df['ContractDuration']==1, df['ContractDuration']==2]
+titl = ['Month-to-month', 'One year', 'Two years']
+""")
 df1 = df[df['Sex']==1]
 df2 = df[df['Sex']==0]
 cond = [df['ContractDuration']==0, df['ContractDuration']==1, df['ContractDuration']==2]
 titl = ['Month-to-month', 'One year', 'Two years']
 
-
-# In[204]:
-
-
+st.code("""
 fig, axis = plt.subplots(1,3, figsize=(20,5))
 for j in range(3):
     axis[j].hist([df1[cond[j]]['ClientPeriod'],df2[cond[j]]['ClientPeriod']], bins=9)
     axis[j].legend(['Male','Female'])
     axis[j].set_title(titl[j])
 plt.show()
+""")
+fig, axis = plt.subplots(1,3, figsize=(20,5))
+for j in range(3):
+    axis[j].hist([df1[cond[j]]['ClientPeriod'],df2[cond[j]]['ClientPeriod']], bins=9)
+    axis[j].legend(['Male','Female'])
+    axis[j].set_title(titl[j])
+st.pyplot(fig)
 
+st.header('Last data comparison')
 
-# ## Last data comparison
-
-# >Churn has negative correlation with parameters HasOnlineSecurityService, HasOnlineBackup, HasDeviceProtection and HasTechSupportAccess. It is possible to put forward a **hypothesis** that the more serveces client has, the less chance that he leave the firm. Moreover, considering correlation coafficients of Churn with IsSeniorCitizen and HasPartner, we may assume that relatevely young married people even less likely to leave the firm for every value of Number of serveces
-
+st.markdown('''
+Churn has negative correlation with parameters HasOnlineSecurityService, HasOnlineBackup, HasDeviceProtection and 
+HasTechSupportAccess. It is possible to put forward a **hypothesis** that the more serveces client has, 
+the less chance that he leave the firm. Moreover, considering correlation coafficients of Churn with 
+IsSeniorCitizen and HasPartner, we may assume that relatevely young married people 
+even less likely to leave the firm for every value of Number of serveces
+''')
 # In[205]:
 
-
+st.code("""
 dfss = df[(df['IsSeniorCitizen'] == 1) & (df['HasPartner'] == 0)]
 dfsm = df[(df['IsSeniorCitizen'] == 1) & (df['HasPartner'] == 1)]
 dfys = df[(df['IsSeniorCitizen'] == 0) & (df['HasPartner'] == 0)]
 dfym = df[(df['IsSeniorCitizen'] == 0) & (df['HasPartner'] == 1)]
-
 dss= []
 dsm = []
 dys= []
@@ -503,8 +508,31 @@ for i in range(1,10):
 for i in range(1,10):
     dfi = df[df['NumberOfServices'] == i]['Churn']
     d.append(sum(list(dfi))/len(dfi))
-
-
+""")
+dfss = df[(df['IsSeniorCitizen'] == 1) & (df['HasPartner'] == 0)]
+dfsm = df[(df['IsSeniorCitizen'] == 1) & (df['HasPartner'] == 1)]
+dfys = df[(df['IsSeniorCitizen'] == 0) & (df['HasPartner'] == 0)]
+dfym = df[(df['IsSeniorCitizen'] == 0) & (df['HasPartner'] == 1)]
+dss = []
+dsm = []
+dys = []
+dym = []
+d = []
+for i in range(1,10):
+    dfi = dfss[df['NumberOfServices'] == i]['Churn']
+    dss.append(sum(list(dfi))/len(dfi))
+for i in range(1,10):
+    dfi = dfsm[df['NumberOfServices'] == i]['Churn']
+    dsm.append(sum(list(dfi))/len(dfi))
+for i in range(1,10):
+    dfi = dfys[df['NumberOfServices'] == i]['Churn']
+    dys.append(sum(list(dfi))/len(dfi))
+for i in range(1,10):
+    dfi = dfym[df['NumberOfServices'] == i]['Churn']
+    dym.append(sum(list(dfi))/len(dfi))
+for i in range(1,10):
+    dfi = df[df['NumberOfServices'] == i]['Churn']
+    d.append(sum(list(dfi))/len(dfi))
 # In[206]:
 
 
