@@ -102,11 +102,21 @@ for i in range(5282):
     except:
         a[i] = df['TotalSpent'][i]
 a
-
+st.code("""
+{1048: ' ',
+ 1707: ' ',
+ 2543: ' ',
+ 3078: ' ',
+ 3697: ' ',
+ 4002: ' ',
+ 4326: ' ',
+ 4551: ' ',
+ 4598: ' '}
+""")
 st.code("""
 df.iloc[list(a.keys()), :]
 """)
-st.dataframe(df.iloc[list(a.keys()), :])
+df.iloc[list(a.keys()), :]
 
 st.markdown('All this strings have 0 in ClientPeriod')
 
@@ -140,10 +150,6 @@ for col_name in cat_cols:
     print(df[col_name].unique())
     print()
 """)
-for col_name in cat_cols:
-    col_name
-    df[col_name].unique()
-
 st.code('''
 Sex
 ['Male' 'Female']
