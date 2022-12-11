@@ -392,39 +392,49 @@ fig = sns.pairplot(data=df[num_cols+[target_col]],hue=target_col)
 fig = sns.pairplot(data=df[num_cols+[target_col]],hue=target_col)
 st.pyplot(fig)
 
-st.markdown('We can see that in ClientPeriod-MonthlySpending chart blue and orange points are located in different parts, so check how relation between ClientPeriod and MonthlySpending depands on whether client left the firm or not')
+st.markdown('''
+We can see that in ClientPeriod-MonthlySpending chart blue and orange points are located in different parts, 
+so check how relation between ClientPeriod and MonthlySpending depands on whether client left the firm or not
+''')
 
 # In[200]:
 
-
+st.code("""
 fig, ax = plt.subplots(1, 2, figsize=(20, 5))
 sns.boxplot(data=df[df['Churn']==0],x='ClientPeriod', y='MonthlySpending',ax=ax[0])
 ax[0].set_title('Stayed')
 sns.boxplot(data=df[df['Churn']==1],x='ClientPeriod', y='MonthlySpending',ax=ax[1])
 ax[1].set_title('Left the firm')
+""")
+fig, ax = plt.subplots(1, 2, figsize=(20, 5))
+sns.boxplot(data=df[df['Churn']==0],x='ClientPeriod', y='MonthlySpending',ax=ax[0])
+ax[0].set_title('Stayed')
+sns.boxplot(data=df[df['Churn']==1],x='ClientPeriod', y='MonthlySpending',ax=ax[1])
+ax[1].set_title('Left the firm')
+st.pyplot(fig)
 
+st.markdown('''
+It can be concluded that for every value of ClientPeriod MonthlySpendings of those
+who left the firm were on average noticeably higher than of those who stayed
+''')
+st.markdown('''
+The next chart shows this pattern even more clear. Orange and blue lines are parallel, 
+and orange lies 20 points higher. It is a very valuable result
+''')
 
-# It can be concluded that for every value of ClientPeriod MonthlySpendings of those who left the firm were on average noticeably higher than of those who stayed
+st.code("""
+fig = sns.lmplot(data=df,x='ClientPeriod', y='MonthlySpending',hue='Churn')
+""")
+fig = sns.lmplot(data=df,x='ClientPeriod', y='MonthlySpending',hue='Churn')
+st.pyplot(fig)
 
-# The next chart shows this pattern even more clear. Orange and blue lines are parallel, and orange lies 20 points higher. It is a very valuable result
+st.markdown('Also we see that, in general, the more ClientPeriod, the more MonthlySpendings')
+st.markdown('Now, something about correlation')
 
-# In[201]:
-
-
-sns.lmplot(data=df,x='ClientPeriod', y='MonthlySpending',hue='Churn')
-
-
-# Also we see that, in general, the more ClientPeriod, the more MonthlySpendings
-# 
-
-# Now, something about correlation
-
-# In[202]:
-
-
-f = df.corr().style.background_gradient(cmap='coolwarm').set_precision(2)
-f
-
+st.code("""
+df.corr().style.background_gradient(cmap='coolwarm').set_precision(2)
+""")
+df.corr().style.background_gradient(cmap='coolwarm').set_precision(2)
 
 # 1) TotalSpent strongly correlate both ClientPeriod and MonthlySpending which is not surprizing at all
 # 
