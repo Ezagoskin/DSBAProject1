@@ -113,20 +113,20 @@ st.markdown('All this strings have 0 in ClientPeriod')
 st.code("""
 sum(df.loc[:, ['ClientPeriod']].values == 0)
 """)
-print(sum(df.loc[:, ['ClientPeriod']].values == 0))
+st.markdown(sum(df.loc[:, ['ClientPeriod']].values == 0))
 
 st.markdown('And they are the only strings which have 0 in ClientPeriod')
 st.markdown('It can be concluded that ' ' in TotalSpent means that TotalSpent is equal 0')
 
-# In[185]:
-
-
+st.code("""
 # Change ' ' in TotalSpent to 0
 df['TotalSpent'][df['TotalSpent'] == ' '] = 0
 df['TotalSpent'] = df['TotalSpent'].astype(float)
+""")
+df['TotalSpent'][df['TotalSpent'] == ' '] = 0
+df['TotalSpent'] = df['TotalSpent'].astype(float)
 
-
-# #### Transformations
+st.subheader('Transformations')
 
 # In[186]:
 
