@@ -9,12 +9,14 @@ st.title('sth')
 st.header('sth')
 st.subheader('sth')
 st.markdown('sth')
+st.code("""
+""")
 # # Analysis of user churn data for a telecom company
-
+st.title('Analysis of user churn data for a telecom company')
 # ## Data preparing
+st.header('Data preparing')
 
-
-
+st.code("""
 df = pd.read_csv("train.csv")
 df.head()
 
@@ -55,12 +57,12 @@ target_col = 'Churn'
 
 
 df.info()
-
+""")
 
 # No null values. But TotalSpent has type object which is strange
-
+st.markdown('No null values. But TotalSpent has type object which is strange')
 # #### Little data clearing
-
+st.subheader('Little data clearing')
 # In[182]:
 
 
