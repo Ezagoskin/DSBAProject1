@@ -443,7 +443,7 @@ st.markdown('''
 3) It can be noticed that clients with long ClientPeriod or long-term contract are less likely to leave the firm
 ''')
 st.markdown('4) Sex correlate with nothing')
-st.markdown('Actually, there is a lot of what can be concluded from this wonderful table, but let's stop here')'
+st.markdown('Actually, there is a lot of what can be concluded from this wonderful table, but we are to stop here')
 st.markdown('The next charts confirms point 2 and partly confirm point 4')
 
 st.code("""
@@ -468,7 +468,7 @@ plt.show()
 fig, axis = plt.subplots(1,3, figsize=(20,5))
 for j in range(3):
     axis[j].hist([df1[cond[j]]['ClientPeriod'],df2[cond[j]]['ClientPeriod']], bins=9)
-    axis[j].legend(['Male','Female'])
+    axis[j].legend(['Male', 'Female'])
     axis[j].set_title(titl[j])
 st.pyplot(fig)
 
@@ -533,15 +533,18 @@ for i in range(1,10):
 for i in range(1,10):
     dfi = df[df['NumberOfServices'] == i]['Churn']
     d.append(sum(list(dfi))/len(dfi))
-# In[206]:
 
-
+st.code("""
 l1 = plt.plot(range(1,10), dss)
 l2 = plt.plot(range(1,10), dsm)
 l3 = plt.plot(range(1,10), dys)
 l4 = plt.plot(range(1,10), dym)
 l5 = plt.plot(range(1,10), d)
 plt.legend(['Senior&Single','Senior&Married','Young&Single','Young&Married','All'])
+""")
 
-
-# The hypotesis was partly confirmd. We knew that function showing ratio of left depending on NumberOfServices has form of mountine with pike at 3 purchaced surveces. Young and Married people are actually less likely to leave a firm for every value of NumberOfServices
+st.subheader('''
+The hypotesis was partly confirmd. We knew that function showing ratio of left depending on 
+NumberOfServices has form of mountine with pike at 3 purchaced surveces. Young and Married people are actually 
+less likely to leave a firm for every value of NumberOfServices
+''')
