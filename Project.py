@@ -10,6 +10,10 @@ st.write("[Little data clearing](https://ezagoskin-dsbaproject1-project-aakiyt.s
 st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
 st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
 st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
+url = "https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#little-data-clearing"
+st.write("check out this [link](%s)" % url)
+
+st.markdown("check out this [link](%s)" % url)
 st.header('Data preparing')
 
 st.code("""
