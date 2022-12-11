@@ -109,15 +109,14 @@ df.iloc[list(a.keys()), :]
 df.iloc[list(a.keys()), :]
 
 st.markdown('All this strings have 0 in ClientPeriod')
-# In[184]:
 
-
+st.code("""
 sum(df.loc[:, ['ClientPeriod']].values == 0)
+""")
+print(sum(df.loc[:, ['ClientPeriod']].values == 0))
 
-
-# And they are the only strings which have 0 in ClientPeriod
-
-# It can be concluded that ' ' in TotalSpent means that TotalSpent is equal 0
+st.markdown('And they are the only strings which have 0 in ClientPeriod')
+st.markdown('It can be concluded that ' ' in TotalSpent means that TotalSpent is equal 0')
 
 # In[185]:
 
