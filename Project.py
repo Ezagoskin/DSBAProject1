@@ -142,6 +142,7 @@ st.subheader('Transformations')
 st.code("""
 old = df.copy() #We will need it later
 """)
+old = df.copy() #We will need it later
 
 st.markdown('Look what values categorical columns have')
 
@@ -205,9 +206,21 @@ PaymentMethod
 
 st.markdown('Most of categorical columns may be reformatted to int64 without loss of data')
 
-# In[188]:
-
-
+st.code("""
+yes_or_no_cols = [
+    'HasPartner',
+    'HasChild',
+    'HasPhoneService',
+    'HasMultiplePhoneNumbers',
+    'HasOnlineSecurityService',
+    'HasOnlineBackup',
+    'HasDeviceProtection',
+    'HasTechSupportAccess',
+    'HasOnlineTV',
+    'HasMovieSubscription',
+    'IsBillingPaperless',
+]
+""")
 yes_or_no_cols = [
     'HasPartner',
     'HasChild',
@@ -222,20 +235,17 @@ yes_or_no_cols = [
     'IsBillingPaperless',
 ]
 
-
-# In[189]:
-
-
+st.code("""
 # Make data easier to analyse and use for machine learning
 df[yes_or_no_cols] = (df[yes_or_no_cols] == 'Yes').astype(int)
 df['Sex'] = (df['Sex'] == 'Male').astype(int)
+""")
+df[yes_or_no_cols] = (df[yes_or_no_cols] == 'Yes').astype(int)
+df['Sex'] = (df['Sex'] == 'Male').astype(int)
 
+st.markdown('Object parameter HasContractPhone can be changed to int64 ContractDuration')
 
-# Object parameter HasContractPhone can be changed to int64 ContractDuration
-
-# In[190]:
-
-
+st.code("""
 df['HasContractPhone'][df['HasContractPhone'] == 'Month-to-month'] = 0  
 df['HasContractPhone'][df['HasContractPhone'] == 'One year'] = 1
 df['HasContractPhone'][df['HasContractPhone'] == 'Two year'] = 2
@@ -243,19 +253,30 @@ new_columns = list(df.columns)
 new_columns[-4] = 'ContractDuration'
 df.columns = new_columns
 df['ContractDuration'] = df['ContractDuration'].astype(int)
+""")
+df['HasContractPhone'][df['HasContractPhone'] == 'Month-to-month'] = 0
+df['HasContractPhone'][df['HasContractPhone'] == 'One year'] = 1
+df['HasContractPhone'][df['HasContractPhone'] == 'Two year'] = 2
+new_columns = list(df.columns)
+new_columns[-4] = 'ContractDuration'
+df.columns = new_columns
+df['ContractDuration'] = df['ContractDuration'].astype(int)
 
+st.markdown("Create an additional parameter showing how many services of the company every customer uses")
 
-# In[190]:
-
-
-
-
-
-# Let's create an additional parameter showing how many services of the company every customer uses
-
-# In[191]:
-
-
+st.code("""
+serv = [
+    'HasPhoneService',
+    'HasMultiplePhoneNumbers',
+    'HasOnlineSecurityService',
+    'HasOnlineBackup',
+    'HasDeviceProtection',
+    'HasTechSupportAccess',
+    'HasOnlineTV',
+    'HasMovieSubscription',
+    'HasInternetService',
+]
+""")
 serv = [
     'HasPhoneService',
     'HasMultiplePhoneNumbers',
@@ -268,17 +289,18 @@ serv = [
     'HasInternetService',
 ]
 
-
-# In[192]:
-
-
+st.code("""
 df[['InternetService']] = df[['HasInternetService']]
 df[['HasInternetService']] = (df[['HasInternetService']] != 'No').astype(int)
 df['NumberOfServices'] = df[serv].sum(axis=1)
 old['NumberOfServices'] = df['NumberOfServices']
 num_cols.append('NumberOfServices')
-
-
+""")
+df[['InternetService']] = df[['HasInternetService']]
+df[['HasInternetService']] = (df[['HasInternetService']] != 'No').astype(int)
+df['NumberOfServices'] = df[serv].sum(axis=1)
+old['NumberOfServices'] = df['NumberOfServices']
+num_cols.append('NumberOfServices')
 # In[193]:
 
 
