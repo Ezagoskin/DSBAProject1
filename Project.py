@@ -11,9 +11,8 @@ st.subheader('sth')
 st.markdown('sth')
 st.code("""
 """)
-# # Analysis of user churn data for a telecom company
+
 st.title('Analysis of user churn data for a telecom company')
-# ## Data preparing
 st.header('Data preparing')
 
 st.code("""
@@ -22,7 +21,6 @@ df.head()
 """)
 df = pd.read_csv("train.csv")
 st.dataframe(df.head())
-# In[180]:
 
 st.code("""
 num_cols = [
@@ -58,7 +56,6 @@ num_cols = [
     'MonthlySpending',
     'TotalSpent'
 ]
-
 cat_cols = [
     'Sex',
     'IsSeniorCitizen',
@@ -77,23 +74,18 @@ cat_cols = [
     'IsBillingPaperless',
     'PaymentMethod'
 ]
-
 feature_cols = num_cols + cat_cols
 target_col = 'Churn'
-# In[181]:
 
 st.code("""
 df.info()
 """)
-df.info()
+st.dataframe(df.info())
 
-# No null values. But TotalSpent has type object which is strange
 st.markdown('No null values. But TotalSpent has type object which is strange')
-# #### Little data clearing
 st.subheader('Little data clearing')
-# In[182]:
 
-
+st.code("""
 # Find not numbers in TotalSpent
 a = {}
 for i in range(5282):
@@ -102,16 +94,21 @@ for i in range(5282):
     except:
         a[i] = df['TotalSpent'][i]
 a
+""")
+a = {}
+for i in range(5282):
+    try:
+        x = float(df['TotalSpent'][i])
+    except:
+        a[i] = df['TotalSpent'][i]
+a
 
-
-# In[183]:
-
-
+st.code("""
+df.iloc[list(a.keys()), :]
+""")
 df.iloc[list(a.keys()), :]
 
-
-# All this strings have 0 in ClientPeriod
-
+st.markdown('All this strings have 0 in ClientPeriod')
 # In[184]:
 
 
