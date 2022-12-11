@@ -4,19 +4,17 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-st.title('Analysis of user churn data for a telecom company')
-st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
-st.write("[Little data clearing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#little-data-clearing)")
-st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
-st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
-st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
-st.markdown("[Little data clearing](#Little data clearing)")
 st.sidebar.markdown('''
 # Sections
-- [Little data clearing](#Little data clearing)
-- [Little data clearing](#Little data clearing)
+- [Data preparing](#data-preparing)
+- [Little data clearing](#little-data-clearing)
+- [Transformations](#transformations)
+- [Data overview](#data-overview)
+- [Data comparison](#data-comparison)
+- [Last data comparison](#last-data-comparison)
 ''', unsafe_allow_html=True)
 
+st.title('Analysis of user churn data for a telecom company')
 st.header('Data preparing')
 
 st.code("""
