@@ -356,7 +356,37 @@ st.dataframe(df.head())
 st.code("""
 df.info())
 """)
-st.dataframe(df.info())
+st.code("""
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5282 entries, 0 to 5281
+Data columns (total 22 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   ClientPeriod              5282 non-null   int64  
+ 1   MonthlySpending           5282 non-null   float64
+ 2   TotalSpent                5282 non-null   float64
+ 3   Sex                       5282 non-null   int64  
+ 4   IsSeniorCitizen           5282 non-null   int64  
+ 5   HasPartner                5282 non-null   int64  
+ 6   HasChild                  5282 non-null   int64  
+ 7   HasPhoneService           5282 non-null   int64  
+ 8   HasMultiplePhoneNumbers   5282 non-null   int64  
+ 9   HasInternetService        5282 non-null   int64  
+ 10  HasOnlineSecurityService  5282 non-null   int64  
+ 11  HasOnlineBackup           5282 non-null   int64  
+ 12  HasDeviceProtection       5282 non-null   int64  
+ 13  HasTechSupportAccess      5282 non-null   int64  
+ 14  HasOnlineTV               5282 non-null   int64  
+ 15  HasMovieSubscription      5282 non-null   int64  
+ 16  ContractDuration          5282 non-null   int64  
+ 17  IsBillingPaperless        5282 non-null   int64  
+ 18  PaymentMethod             5282 non-null   object 
+ 19  InternetService           5282 non-null   object 
+ 20  NumberOfServices          5282 non-null   int64  
+ 21  Churn                     5282 non-null   int64  
+dtypes: float64(2), int64(18), object(2)
+memory usage: 908.0+ KB
+""")
 
 st.markdown('Now there is only two object columns. It makes data more convenient for a range of analysis types')
 st.header('Data overview')
