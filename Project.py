@@ -90,7 +90,35 @@ target_col = 'Churn'
 st.code("""
 df.info()
 """)
-st.markdown(df.info())
+st.code('''
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5282 entries, 0 to 5281
+Data columns (total 20 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   ClientPeriod              5282 non-null   int64  
+ 1   MonthlySpending           5282 non-null   float64
+ 2   TotalSpent                5282 non-null   object 
+ 3   Sex                       5282 non-null   object 
+ 4   IsSeniorCitizen           5282 non-null   int64  
+ 5   HasPartner                5282 non-null   object 
+ 6   HasChild                  5282 non-null   object 
+ 7   HasPhoneService           5282 non-null   object 
+ 8   HasMultiplePhoneNumbers   5282 non-null   object 
+ 9   HasInternetService        5282 non-null   object 
+ 10  HasOnlineSecurityService  5282 non-null   object 
+ 11  HasOnlineBackup           5282 non-null   object 
+ 12  HasDeviceProtection       5282 non-null   object 
+ 13  HasTechSupportAccess      5282 non-null   object 
+ 14  HasOnlineTV               5282 non-null   object 
+ 15  HasMovieSubscription      5282 non-null   object 
+ 16  HasContractPhone          5282 non-null   object 
+ 17  IsBillingPaperless        5282 non-null   object 
+ 18  PaymentMethod             5282 non-null   object 
+ 19  Churn                     5282 non-null   int64  
+dtypes: float64(1), int64(3), object(16)
+memory usage: 825.4+ KB
+''')
 
 st.markdown('No null values. But TotalSpent has type object which is strange')
 st.subheader('Little data clearing')
