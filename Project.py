@@ -112,6 +112,7 @@ st.code("""
  4551: ' ',
  4598: ' '}
 """)
+
 st.code("""
 df.iloc[list(a.keys()), :]
 """)
@@ -262,7 +263,7 @@ new_columns[-4] = 'ContractDuration'
 df.columns = new_columns
 df['ContractDuration'] = df['ContractDuration'].astype(int)
 
-st.markdown("Create an additional parameter showing how many services of the company every customer uses")
+st.markdown('Create an additional parameter showing how many services of the company every customer uses')
 
 st.code("""
 serv = [
@@ -303,32 +304,31 @@ old['NumberOfServices'] = df['NumberOfServices']
 num_cols.append('NumberOfServices')
 # In[193]:
 
-
+st.code("""
 #Rearrange columns order a bit
 cols = df.columns.tolist()
 cols = cols[:-3] + cols[-2:]+ cols[-3:-2]
 df = df[cols]
 df.head()
+""")
+cols = df.columns.tolist()
+cols = cols[:-3] + cols[-2:]+ cols[-3:-2]
+df = df[cols]
+st.dataframe(df.head())
 
+st.code("""
+df.info())
+""")
+st.dataframe(df.info())
 
-# In[194]:
+st.markdown('Now there is only two object columns. It makes data more convenient for a range of analysis types')
+st.header('Data overview')
+st.markdown('Start with representing some information about numeric columns')
 
-
-df.info()
-
-
-# Now there is only two object columns. It makes data more convenient for a range of analysis types
-
-# ## Data overview
-
-# Start with representing some information about numeric columns
-
-# In[195]:
-
-
+st.code("""
 df[num_cols].describe()
-
-
+""")
+st.dataframe(df[num_cols].describe())
 # In[196]:
 
 
