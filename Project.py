@@ -542,6 +542,12 @@ l4 = plt.plot(range(1,10), dym)
 l5 = plt.plot(range(1,10), d)
 plt.legend(['Senior&Single','Senior&Married','Young&Single','Young&Married','All'])
 """)
+plt.plot(range(1,10), dss)
+plt.plot(range(1,10), dsm)
+plt.plot(range(1,10), dys)
+plt.plot(range(1,10), dym)
+plt.plot(range(1,10), d)
+plt.legend(['Senior&Single','Senior&Married','Young&Single','Young&Married','All'])
 
 st.subheader('''
 The hypotesis was partly confirmd. We knew that function showing ratio of left depending on 
