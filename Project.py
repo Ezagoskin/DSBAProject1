@@ -1,21 +1,18 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[111]:
-
-
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
+import streamlit as st
 sns.set_theme()
 
-
+st.title('sth')
+st.header('sth')
+st.subheader('sth')
+st.markdown('sth')
 # # Analysis of user churn data for a telecom company
 
 # ## Data preparing
 
-# In[179]:
 
 
 df = pd.read_csv("train.csv")
