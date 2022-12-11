@@ -11,6 +11,11 @@ st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streaml
 st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
 st.write("[Data preparing](https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#sth)")
 st.markdown("[Little data clearing](#Little data clearing)")
+st.sidebar.markdown('''
+# Sections
+- [Little data clearing](#Little data clearing)
+- [Little data clearing](#Little data clearing)
+''', unsafe_allow_html=True)
 
 st.header('Data preparing')
 
