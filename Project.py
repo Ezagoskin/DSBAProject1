@@ -140,7 +140,7 @@ for col_name in cat_cols:
     print(df[col_name].unique())
     print()
 """)
-st.markdown('''
+st.code('''
 Sex
 ['Male' 'Female']
 
