@@ -90,7 +90,7 @@ target_col = 'Churn'
 st.code("""
 df.info()
 """)
-st.dataframe(df.info())
+st.markdown(df.info())
 
 st.markdown('No null values. But TotalSpent has type object which is strange')
 st.subheader('Little data clearing')
