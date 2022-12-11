@@ -101,7 +101,6 @@ for i in range(5282):
         x = float(df['TotalSpent'][i])
     except:
         a[i] = df['TotalSpent'][i]
-a
 st.code("""
 {1048: ' ',
  1707: ' ',
@@ -123,7 +122,9 @@ st.markdown('All this strings have 0 in ClientPeriod')
 st.code("""
 sum(df.loc[:, ['ClientPeriod']].values == 0)
 """)
-st.markdown(sum(df.loc[:, ['ClientPeriod']].values == 0))
+st.code("""
+array([9])
+""")
 
 st.markdown('And they are the only strings which have 0 in ClientPeriod')
 st.markdown('It can be concluded that ' ' in TotalSpent means that TotalSpent is equal 0')
