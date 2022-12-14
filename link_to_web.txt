@@ -1,0 +1,3 @@
+Web page: https://ezagoskin-dsbaproject1-project-aakiyt.streamlit.app/#last-data-comparison
+
+Kaggle: https://www.kaggle.com/competitions/advanced-dls-spring-2021/data
